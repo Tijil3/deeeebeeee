@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Deepu</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: pink;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 3em;
+            color: red;
+            animation: bounce 1s infinite alternate, glow 2s infinite alternate;
+        }
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px yellow; }
+            100% { text-shadow: 0 0 20px white; }
+        }
+        .btn {
+            padding: 10px 20px;
+            background: #ff4081;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="welcome">
+        <h1>Happy Bday Deepu 💗💗🫂 My Bestieee 🥰🥰🫂🫂</h1>
+        <button class="btn" onclick="showQuiz()">Next</button>
+    </div>
+    
+    <div id="quiz" class="container">
+        <h2 id="question"></h2>
+        <button class="btn" onclick="answer('yes')">Yes</button>
+        <button class="btn" onclick="answer('no')">No</button>
+        <p id="quizResult"></p>
+        <button class="btn" onclick="prevQuestion()">Previous</button>
+        <button class="btn" onclick="nextQuestion()">Next</button>
+    </div>
+    
+    <div id="final" class="container">
+        <h2>Ek Raat Aur Ek Rishta Jo Bas Ban Hi Gaya" 💖</h2>
+        <p>27th July 2024… Ek DM aaya, ek ajeeb si vibe ke saath.
+        Ek controversy se shuru hui baat, lekin kuch hi lafzon mein aisa connection bana ki
+        jaise yeh dosti pehle se likhi hui thi. 🫂❤
+        
+        Us waqt jo ho raha tha, uspe kabhi baat nahi hoti,
+        kyunki zaroori yeh nahi ki kya beeta, zaroori yeh hai ki aaj kya hai.
+        Aur ab sochta hoon, accha hi hua…
+        Nahi toh LJ aage bhi rulata.
+        Par ab, jo bhi hai, sirf accha hai. 💖
+        
+        "Kuch log zindagi mein dukh ban kar nahi,
+        Dawa ban kar aate hain." 💖
+        
+        Phir dheere-dheere baatein badhti gayi…
+        Aur vibe itni mili ki har baat mein ek alag apnapan tha. 🥰
+        Kabhi mazak, kabhi samjhna, kabhi gussa,
+        Lekin har cheez mein ek rishta jo har emotion se upar tha.
+        
+        Aap mujhse 6 mahine badi sahi, lekin andar se abhi bhi bacchi hi hain! 😂
+        19 saal ki ho gayi, lekin masoomiyat aaj bhi wahi hai.
+        Haan, jab zarurat padi to maa bhi bani, teacher bhi, aur sabse zyada – meri sabse pyaari dost bhi. 🫂❤
+        
+        Aur ek cheez pakki hai –
+        Har kalesh ke baad manana toh mujhe hi padta hai! 😂 (Chhota jo hoon na!)
+        Aap gussa hongi, phir main sorry bolunga,
+        Phir hans ke kahengi – "Chal, rehne de!" 😆
+        
+        "Sachchi dosti wahi hoti hai,
+        Jisme galti ka haq bhi ho, aur manane ka bhi!" 💖
+        
+        Ab jab aap badi ho kar paise kamayengi,
+        Toh mujhe Hot Wheels dilayengi, 😂🏎
+        Aur jab main kamaunga, toh hum France, Switzerland, Dubai – sab jagah ghoomne jayenge! 😍✈🌍
+        
+        Aaj aapka din hai, aapka Happy Wala Birthday! 🎂🎉
+        Dua karta hoon, aap hamesha hansti rahen, dil kabhi udaas na ho. 🤲🥰
+        Jo chahein, wo aapko khud chal kar mile,
+        Aur jo na chahein, wo aapke raste se hat jaye! 😂
+        
+        🎉 Happy Birthday, Deepu! 🎂❤
+        (PS: Aap chahein jitni bhi badi ho jayein, mere liye toh ab bhi wahi bacchi hi rahengi! 😂💖)
+        
+        ---
+        
+        "Dost toh hazaar milenge, par aap jaisa koi nahi,
+        Har baat mein hasi, har baat mein koi kahani nahi.
+        Aapse jhagde bhi hote hain, par pyaar bhi utna hi hai,
+        Chhoti si zindagi hai, bas yeh rishta kabhi puraana nahi!" 🫂❤
+        </p>
+    </div>
+    
+    <script>
+        let questions = [
+            { q: "Pehle ham aapko bta de ki aap 19 ke ho gye ho😂😂", yes: "Hainaa ek dum breaking newz😂😂", no: "Yes kro!" },
+            { q: "Kya aap apne aapko chand se compare krte h?", yes: "KHER VAISE CHAND KO BHI APNE UPER ITNA GURUR NAHI H KYUKI USE BHI PTA H KI USME DAAG H 🥰💗", no: "firse khud ko underestimate kr lia😭😭" },
+            { q: "Kya aapke naam pr hamesha gussa raheta h?", yes: "Caught you😂😂😂", no: "Caught you😂😂😂" }
+        ];
+        
+        let currentQuestion = 0;
+        
+        function showQuiz() {
+            document.getElementById("welcome").style.display = "none";
+            document.getElementById("quiz").style.display = "block";
+            loadQuestion();
+        }
+        
+        function loadQuestion() {
+            document.getElementById("question").innerText = questions[currentQuestion].q;
+            document.getElementById("quizResult").innerText = "";
+        }
+        
+        function answer(choice) {
+            document.getElementById("quizResult").innerText = questions[currentQuestion][choice];
+        }
+    </script>
+</body>
+</html>
